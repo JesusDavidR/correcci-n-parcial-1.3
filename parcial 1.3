@@ -1,0 +1,29 @@
+void setup(){
+  size(640,480);
+}
+class pantalla{
+  int tam;
+   IntList x0=new IntList();
+   IntList y0=new IntList();
+  void pant(int tam,int mo_x,int mo_y,IntList x,IntList y){
+  clear();
+    this.corte(x,y,tam,mo_x,mo_y);
+  }
+  void corte(IntList x,IntList y,int tam, int mo_x, int mo_y){
+  x0.clear();
+    y0.clear();
+    for(int i=0;i<x.size();i++){
+    if(x.get(i)<=tam/2+mo_x&&x.get(i)>=-tam/2+mo_x&&y.get(i)<=tam/2+mo_y&&y.get(i)>=-tam/2+mo_y){
+     stroke(255,255,0);
+     x0.append(x.get(i));
+     y0.append(y.get(i));
+    }
+    }
+  }
+}
+pantalla mipant=new pantalla();
+vertice li=new vertice(255);
+void draw(){
+  mipant.pant(150,mouseX,mouseY,li.x,li.y);
+   li.line(50,mipant.x0,mipant.y0);
+  }
